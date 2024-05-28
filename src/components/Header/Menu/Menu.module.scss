@@ -1,0 +1,40 @@
+@import 'src/styles/mixins';
+
+.menuList {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.link {
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    @include transition(color);
+
+    &:hover {
+        color: var(--button);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--button);
+        transform: scale(0);
+        @include transition(transform);
+    }
+
+    &:global(.active) {
+        color: var(--button);
+
+        &::after {
+            transform: scale(1);
+        }
+    }
+}
