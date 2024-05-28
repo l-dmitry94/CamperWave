@@ -1,0 +1,33 @@
+.item {
+    flex-basis: calc((100% - 72px) / 4);
+    border: 1px solid var(--main);
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.wrapperIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--main);
+    margin-bottom: 20px;
+}
+
+.icon {
+    fill: var(--main);
+}
+
+.cardTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.cardDescription {
+    line-height: 1.5;
+    color: var(--text);
+}
