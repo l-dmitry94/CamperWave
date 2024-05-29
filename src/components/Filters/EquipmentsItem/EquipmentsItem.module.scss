@@ -1,0 +1,42 @@
+@import "src/styles/mixins";
+
+.itemCheckbox {
+    flex-basis: calc((100% - 20px) / 3);
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.itemInput:checked + .itemLabel {
+    border-color: var(--button);
+}
+
+.itemLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    height: 95px;
+    font-weight: 500;
+    line-height: 1.25;
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    @include transition(border-color)
+}
+
+.itemIcon {
+    fill: transparent;
+    stroke: var(--main);
+}
