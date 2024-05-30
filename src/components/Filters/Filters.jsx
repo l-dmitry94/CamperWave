@@ -22,7 +22,9 @@ const Filters = () => {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm({ defaultValues });
 
-    const onSubmit = (data) => dispatch(setFilter(data));
+    const onSubmit = (data) => {
+        dispatch(setFilter(data));
+    };
 
     return (
         <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
