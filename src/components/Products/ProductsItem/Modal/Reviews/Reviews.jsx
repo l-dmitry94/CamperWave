@@ -1,6 +1,6 @@
-import scss from './Reviews.module.scss';
+// import scss from './Reviews.module.scss';
 
-const Reviews = ({ product }) => {
+const Reviews = () => {
     return <div>Reviews</div>;
 };
 
