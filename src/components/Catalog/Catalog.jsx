@@ -1,8 +1,8 @@
 import Container from 'components/Container';
 import Filters from 'components/Filters';
+import Products from 'components/Products';
 
 import scss from './Catalog.module.scss';
-import Products from 'components/Products';
 
 const Catalog = () => {
     return (

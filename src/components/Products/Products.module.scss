@@ -1,0 +1,9 @@
+.section {
+    flex: 1;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}

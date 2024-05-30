@@ -1,0 +1,35 @@
+.mainDescription {
+    max-width: 525px;
+    line-height: 1.5;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 24px;
+}
+
+.mainCategories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.mainCategoriesItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--block-features);
+    border-radius: 100px;
+    padding: 12px 17px;
+}
+
+.mainCategoriesIcon {
+    fill: transparent;
+    stroke: var(--main);
+}
+
+.mainCategoriesIconFill {
+    fill: var(--main);
+}

@@ -1,10 +1,16 @@
 import scss from './CustomButton.module.scss';
 
-const CustomButton = ({ text, type }) => {
+const CustomButton = ({ text, type, onClick }) => {
     return (
-        <button type={type} className={scss.button}>
-            {text}
-        </button>
+        <>
+            <button
+                type={type}
+                className={scss.button}
+                onClick={onClick ? onClick : () => {}}
+            >
+                {text}
+            </button>
+        </>
     );
 };
 

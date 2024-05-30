@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import Location from './Location';
@@ -8,6 +9,7 @@ import CustomButton from 'components/CustomButton';
 
 import equipments from './equipments.json';
 import types from './types.json';
+import { setFilter } from '../../redux/filter/filter-slice';
 
 import scss from './Filters.module.scss';
 
@@ -17,9 +19,10 @@ const Filters = () => {
         equipments: [equipments[0].title],
         type: '',
     };
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm({ defaultValues });
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => dispatch(setFilter(data));
 
     return (
         <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>

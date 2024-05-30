@@ -1,0 +1,68 @@
+@import 'src/styles/mixins';
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.content {
+    transform: translateY(50px);
+    max-width: 982px;
+    width: 100%;
+    @include transition(transform);
+}
+
+.wrapper {
+    position: relative;
+    max-height: 600px;
+    border-radius: 20px;
+    background-color: var(--white);
+    overflow-y: auto;
+    padding: 40px;
+}
+
+.head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.closeModalIcon {
+    width: 32px;
+    height: 32px;
+    stroke: var(--main);
+}
+
+.gallery {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.galleryItem {
+    flex-basis: calc((100% - 32px) / 3);
+}
+
+.image {
+    height: 310px;
+    object-fit: cover;
+}
+
+.description {
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 44px;
+}

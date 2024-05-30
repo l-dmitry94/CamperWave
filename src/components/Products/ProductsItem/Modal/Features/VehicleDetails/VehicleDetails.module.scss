@@ -1,0 +1,26 @@
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.detailsTable {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemText {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+    color: var(--main);
+}

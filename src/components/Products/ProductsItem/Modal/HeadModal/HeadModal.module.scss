@@ -1,0 +1,72 @@
+.head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.headTitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+
+.headRatingLocation {
+    display: flex;
+    gap: 16px;
+}
+
+.headRating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.headStarIcon {
+    width: 16px;
+    height: 16px;
+    fill: var(--rating);
+}
+
+.headRatingText {
+    line-height: 1.5;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.headLocation {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.headLocationIcon {
+    width: 16px;
+    height: 16px;
+    fill: transparent;
+    stroke: var(--main);
+}
+
+.headLocationText {
+    line-height: 1.5;
+}
+
+.headPriceLike {
+    margin-top: 16px;
+}
+
+.headPrice {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.likeIcon {
+    fill: transparent;
+    stroke: var(--main);
+}
+
+.likeIconPressed {
+    fill: var(--button);
+    stroke: transparent;
+}
