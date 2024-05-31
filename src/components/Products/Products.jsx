@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductsItem from './ProductsItem';
 
 import { getProducts } from '../../redux/products/products-operations';
-import { selectProducts } from '../../redux/products/products-selectors';
+import {
+    selectIsLoadMore,
+    selectProducts,
+} from '../../redux/products/products-selectors';
 
 import scss from './Products.module.scss';
 
@@ -12,8 +15,7 @@ const Products = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
     const products = useSelector(selectProducts);
-
-    console.log(products);
+    const isLoadMore = useSelector(selectIsLoadMore);
 
     useEffect(() => {
         dispatch(getProducts(page));
@@ -30,9 +32,15 @@ const Products = () => {
                     <ProductsItem key={product._id} product={product} />
                 ))}
             </ul>
-            <button type="button" onClick={loadMore} className={scss.loadMore}>
-                Load more
-            </button>
+            {isLoadMore && (
+                <button
+                    type="button"
+                    onClick={loadMore}
+                    className={scss.loadMore}
+                >
+                    Load more
+                </button>
+            )}
         </section>
     );
 };

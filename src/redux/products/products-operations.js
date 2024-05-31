@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { productsRequest } from 'api/products-api';
 
 export const getProducts = createAsyncThunk(
