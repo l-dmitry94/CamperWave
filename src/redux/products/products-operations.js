@@ -3,9 +3,9 @@ import { productsRequest } from 'api/products-api';
 
 export const getProducts = createAsyncThunk(
     'products/products',
-    async (_, { rejectWithValue }) => {
+    async (page, { rejectWithValue }) => {
         try {
-            const data = await productsRequest();
+            const data = await productsRequest(page);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data.message);

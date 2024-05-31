@@ -1,0 +1,47 @@
+.head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.letterWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--button);
+    background-color: var(--block-features);
+    border-radius: 50%;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-bottom: 4px;
+}
+
+.rating {
+    display: flex;
+    gap: 4px;
+}
+
+.starIcon {
+    width: 16px;
+    height: 16px;
+    fill: var(--block-features);
+
+    &.starFilled {
+        fill: var(--rating);
+    }
+}
+
+.comment {
+    line-height: 1.5;
+    color: var(--text);
+}

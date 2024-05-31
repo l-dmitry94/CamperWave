@@ -1,0 +1,13 @@
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 430px;
+    width: 100%;
+}
