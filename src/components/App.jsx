@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import AppBar from './AppBar';
 import HomePage from 'pages/HomePage';
@@ -13,6 +13,8 @@ const App = () => {
                 <Route path="catalog" element={<CatalogPage />} />
                 <Route path="favorites" element={<FavoritesPages />} />
             </Route>
+
+            <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );
 };

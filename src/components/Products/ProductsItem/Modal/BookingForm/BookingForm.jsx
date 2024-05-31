@@ -1,5 +1,8 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 import * as yup from 'yup';
 
 import CustomButton from 'components/CustomButton';
@@ -24,11 +27,13 @@ const BookingForm = ({ product }) => {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
     });
     const onSubmit = (data) => {
+        data.date = format(data.date, 'dd.MM.yyyy');
         console.log({ ...data, van: product.name });
         window.location.reload();
     };
@@ -63,11 +68,23 @@ const BookingForm = ({ product }) => {
                     </div>
                     <div className={scss.wrapper}>
                         <div className={scss.dateWrapper}>
-                            <input
-                                {...register('date')}
-                                type="text"
-                                placeholder="Booking date"
-                                className={scss.input}
+                            <Controller
+                                name="date"
+                                control={control}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        {...field}
+                                        selected={field.value}
+                                        onChange={(date) =>
+                                            field.onChange(date)
+                                        }
+                                        minDate={field.value}
+                                        dateFormat="dd.MM.yyyy"
+                                        calendarClassName="calendar"
+                                        className={scss.input}
+                                        placeholderText="Booking date"
+                                    />
+                                )}
                             />
                             <svg className={scss.dateIcon}>
                                 <use href={`${icons}#icon-calendar`}></use>
