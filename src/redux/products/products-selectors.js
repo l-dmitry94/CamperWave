@@ -7,5 +7,5 @@ export const selectIsLoadMore = (state) => state.products.isLoadMore;
 export const selectProductById = createSelector(
     [selectProducts, (_, productId) => productId],
     (products, productId) =>
-        products.find((product) => product.id === productId)
+        products.find((product) => product._id === productId)
 );

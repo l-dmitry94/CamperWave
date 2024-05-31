@@ -1,3 +1,5 @@
+@import 'src/styles/mixins';
+
 .head {
     display: flex;
     align-items: flex-start;
@@ -67,9 +69,12 @@
 .likeIcon {
     fill: transparent;
     stroke: var(--main);
+    transition:
+        fill 0.1s linear,
+        stroke 0.1s linear;
 }
 
 .likeIconPressed {
     fill: var(--button);
-    stroke: transparent;
+    stroke: var(--button);
 }

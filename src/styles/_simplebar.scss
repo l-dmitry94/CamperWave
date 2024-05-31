@@ -1,0 +1,13 @@
+.react-simplebar {
+    & .simplebar-track.simplebar-vertical {
+        width: 8px;
+        right: -21px;
+        overflow: visible;
+    }
+
+    & .simplebar-scrollbar::before {
+        opacity: 1;
+        width: 8px;
+        background-color: #d9d9d9;
+    }
+}

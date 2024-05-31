@@ -1,4 +1,6 @@
 import ReactModal from 'react-modal';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 import HeadModal from './HeadModal';
 import Tabs from './Tabs';
@@ -28,22 +30,26 @@ const Modal = ({ isOpen, onClose, product }) => {
                         </svg>
                     </button>
                 </div>
+                <SimpleBar
+                    className="react-simplebar"
+                    style={{ maxHeight: 378 }}
+                >
+                    <ul className={scss.gallery}>
+                        {product.gallery.map((image, index) => (
+                            <li key={index} className={scss.galleryItem}>
+                                <img
+                                    src={image}
+                                    alt={product.name}
+                                    className={scss.image}
+                                />
+                            </li>
+                        ))}
+                    </ul>
 
-                <ul className={scss.gallery}>
-                    {product.gallery.map((image, index) => (
-                        <li key={index} className={scss.galleryItem}>
-                            <img
-                                src={image}
-                                alt={product.name}
-                                className={scss.image}
-                            />
-                        </li>
-                    ))}
-                </ul>
+                    <p className={scss.description}>{product.description}</p>
 
-                <p className={scss.description}>{product.description}</p>
-
-                <Tabs product={product} />
+                    <Tabs product={product} />
+                </SimpleBar>
             </div>
         </ReactModal>
     );

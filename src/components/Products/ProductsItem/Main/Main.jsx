@@ -2,10 +2,14 @@ import { icons } from 'assets/icons';
 
 import scss from './Main.module.scss';
 
-const Main = ({ product }) => {
+const Main = ({ product, label }) => {
     return (
         <div className={scss.main}>
-            <p className={scss.mainDescription}>{product.description}</p>
+            <p
+                className={`${scss.mainDescription} ${label && scss.mainDescriptionFavorite}`}
+            >
+                {product.description}
+            </p>
             <ul className={scss.mainCategories}>
                 <li className={scss.mainCategoriesItem}>
                     <svg className={scss.mainCategoriesIconFill}>

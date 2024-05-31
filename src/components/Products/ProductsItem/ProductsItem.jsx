@@ -7,7 +7,7 @@ import Modal from './Modal';
 
 import scss from './ProductsItem.module.scss';
 
-const ProductsItem = ({ product }) => {
+const ProductsItem = ({ product, label }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -35,7 +35,7 @@ const ProductsItem = ({ product }) => {
                 <div className={scss.info}>
                     <Head product={product} />
 
-                    <Main product={product} />
+                    <Main product={product} label={label} />
 
                     <CustomButton
                         type="button"
@@ -48,6 +48,7 @@ const ProductsItem = ({ product }) => {
             <Modal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
+                productId={product._id}
                 product={product}
             />
         </>
