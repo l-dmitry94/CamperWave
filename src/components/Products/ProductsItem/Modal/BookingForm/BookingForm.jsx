@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import DatePicker from 'react-datepicker';
@@ -24,6 +25,9 @@ const schema = yup
     .required();
 
 const BookingForm = ({ product }) => {
+    const today = Date.now();
+    const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -37,6 +41,11 @@ const BookingForm = ({ product }) => {
         console.log({ ...data, van: product.name });
         window.location.reload();
     };
+
+    const handleClick = () => {
+        setIsOpenDatePicker(!isOpenDatePicker);
+    };
+
     return (
         <section className={scss.section}>
             <div className={scss.info}>
@@ -72,23 +81,31 @@ const BookingForm = ({ product }) => {
                                 name="date"
                                 control={control}
                                 render={({ field }) => (
-                                    <DatePicker
-                                        {...field}
-                                        selected={field.value}
-                                        onChange={(date) =>
-                                            field.onChange(date)
-                                        }
-                                        minDate={field.value}
-                                        dateFormat="dd.MM.yyyy"
-                                        calendarClassName="calendar"
-                                        className={scss.input}
-                                        placeholderText="Booking date"
-                                    />
+                                    <>
+                                        <DatePicker
+                                            {...field}
+                                            selected={field.value}
+                                            onChange={(date) =>
+                                                field.onChange(date)
+                                            }
+                                            minDate={today}
+                                            dateFormat="dd.MM.yyyy"
+                                            className={scss.input}
+                                            placeholderText="Booking date"
+                                            inline={isOpenDatePicker}
+                                        />
+
+                                        <svg
+                                            className={scss.dateIcon}
+                                            onClick={handleClick}
+                                        >
+                                            <use
+                                                href={`${icons}#icon-calendar`}
+                                            ></use>
+                                        </svg>
+                                    </>
                                 )}
                             />
-                            <svg className={scss.dateIcon}>
-                                <use href={`${icons}#icon-calendar`}></use>
-                            </svg>
                         </div>
                         <p className={scss.error}>{errors.date?.message}</p>
                     </div>
