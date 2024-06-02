@@ -30,10 +30,7 @@ const Modal = ({ isOpen, onClose, product }) => {
                         </svg>
                     </button>
                 </div>
-                <SimpleBar
-                    className="react-simplebar"
-                    style={{ maxHeight: 378 }}
-                >
+                <SimpleBar className="react-simplebar">
                     <ul className={scss.gallery}>
                         {product.gallery.map((image, index) => (
                             <li key={index} className={scss.galleryItem}>
