@@ -22,3 +22,17 @@
         border-color: var(--button);
     }
 }
+
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.emptyText {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.25;
+}

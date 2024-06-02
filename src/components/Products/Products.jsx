@@ -63,7 +63,9 @@ const Products = () => {
                         </>
                     ) : (
                         <div className={scss.empty}>
-                            <p>We couldn&apos;t find anything</p>
+                            <p className={scss.emptyText}>
+                                We couldn&apos;t find anything
+                            </p>
                             <CustomButton
                                 type="button"
                                 text="Show all motorhomes"
