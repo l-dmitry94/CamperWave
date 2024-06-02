@@ -61,7 +61,7 @@ This application is developed for a company that provides camper rental services
     ```sh
     npm start
     ```
-4. Open in your browser: `http://localhost:3000`
+4. Open in your browser: `http://localhost:5173`
 
 ## Technologies Used
 - React
