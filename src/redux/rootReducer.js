@@ -4,7 +4,6 @@ import storage from 'redux-persist/lib/storage';
 
 import favoriteReducer from './favorite/favorite-slice';
 import productsReducer from './products/products-slice';
-import filterReducer from './filter/filter-slice';
 
 const persistConfig = {
     key: 'root',
@@ -17,7 +16,6 @@ const persistedReducer = persistReducer(persistConfig, favoriteReducer);
 const rootReducer = combineReducers({
     favorite: persistedReducer,
     products: productsReducer,
-    filter: filterReducer,
 });
 
 export default rootReducer;

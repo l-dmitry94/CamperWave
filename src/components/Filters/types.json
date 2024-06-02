@@ -1,14 +1,17 @@
 [
     {
         "icon": "van",
-        "title": "Van"
+        "title": "Van",
+        "backendName": "panelTruck"
     },
     {
         "icon": "fully-integrated",
-        "title": "Fully Integrated"
+        "title": "Fully Integrated",
+        "backendName": "fullyIntegrated"
     },
     {
         "icon": "alcove",
-        "title": "Alcove"
+        "title": "Alcove",
+        "backendName": "alcove"
     }
 ]

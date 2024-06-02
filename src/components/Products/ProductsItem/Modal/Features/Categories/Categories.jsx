@@ -18,7 +18,7 @@ const Categories = ({ product }) => {
                 {product.transmission}
             </li>
             <li className={scss.categoriesItem}>
-                <svg className={scss.categoriesItemIcon}>
+                <svg className={scss.categoriesItemIconFill}>
                     <use href={`${icons}#icon-ac`}></use>
                 </svg>
                 AC

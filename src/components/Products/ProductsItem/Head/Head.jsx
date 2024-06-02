@@ -9,6 +9,7 @@ import {
 import { icons } from 'assets/icons';
 
 import scss from './Head.module.scss';
+import { toast } from 'react-toastify';
 
 const Head = ({ product }) => {
     const favoriteProducts = useSelector(selectFavoriteProducts);
@@ -21,7 +22,17 @@ const Head = ({ product }) => {
     const toggleFavoriteProducts = () => {
         if (!isDublicateProduct) {
             dispatch(addProductToFavorite(product));
-        } else dispatch(deleteProductFromFavorite(product._id));
+            toast.success('Motorhome added to favorites', {
+                autoClose: 2000,
+                closeOnClick: true,
+            });
+        } else {
+            dispatch(deleteProductFromFavorite(product._id));
+            toast.success('Motorhome removed from favorites', {
+                autoClose: 2000,
+                closeOnClick: true,
+            });
+        }
     };
 
     return (

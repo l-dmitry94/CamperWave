@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import Location from './Location';
 import EquipmentsItem from './EquipmentsItem';
@@ -9,21 +11,39 @@ import CustomButton from 'components/CustomButton';
 
 import equipments from './equipments.json';
 import types from './types.json';
-import { setFilter } from '../../redux/filter/filter-slice';
+import { getFilteredProducts } from '../../redux/products/products-operations';
 
 import scss from './Filters.module.scss';
+
+const schema = yup
+    .object({
+        location: yup.string(),
+        equipments: yup.array().of(yup.string()),
+        type: yup.string(),
+    })
+    .test(
+        'at-least-one',
+        'Either location, type must or equipments be provided',
+        (value) => {
+            return value.location || value.type || value.equipments.length > 0;
+        }
+    );
 
 const Filters = () => {
     const defaultValues = {
         location: '',
-        equipments: [equipments[0].title],
+        equipments: [],
         type: '',
     };
     const dispatch = useDispatch();
-    const { register, handleSubmit } = useForm({ defaultValues });
+    const { register, handleSubmit } = useForm({
+        defaultValues,
+        resolver: yupResolver(schema),
+    });
 
     const onSubmit = (data) => {
-        dispatch(setFilter(data));
+        dispatch(getFilteredProducts(data));
+        console.log(data);
     };
 
     return (

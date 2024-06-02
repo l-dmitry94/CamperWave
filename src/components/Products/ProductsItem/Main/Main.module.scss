@@ -24,9 +24,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 500;
+    line-height: 1.25;
     background-color: var(--block-features);
     border-radius: 100px;
-    padding: 12px 17px;
+    padding: 12px 16px;
 }
 
 .mainCategoriesIcon {
@@ -36,4 +38,9 @@
 
 .mainCategoriesIconFill {
     fill: var(--main);
+    stroke: transparent;
+}
+
+.categoryText {
+    text-transform: capitalize;
 }
