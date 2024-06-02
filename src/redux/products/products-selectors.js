@@ -4,6 +4,11 @@ export const selectProducts = (state) => state.products.products;
 
 export const selectIsLoadMore = (state) => state.products.isLoadMore;
 
+export const selectIsLoading = (state) => state.products.isLoading;
+
+export const selectisEmptyResultFilter = (state) =>
+    state.products.isEmptyResultFilter;
+
 export const selectProductById = createSelector(
     [selectProducts, (_, productId) => productId],
     (products, productId) =>

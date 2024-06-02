@@ -9,17 +9,21 @@ const productsSlice = createSlice({
         products: [],
         isLoadMore: false,
         toastId: null,
+        isEmptyResultFilter: false,
+        isLoading: false,
     },
     extraReducers: (builder) =>
         builder
             .addCase(getProducts.pending, (state) => {
                 state.toastId = toast.loading('Please wait...');
+                state.isLoading = true;
             })
             .addCase(getProducts.fulfilled, (state, action) => {
                 state.products = action.payload?.length
                     ? [...state.products, ...action.payload]
                     : state.products;
                 state.isLoadMore = action.payload.length === 4;
+                state.isLoading = false;
                 toast.update(state.toastId, {
                     render: 'Motorhomes loaded successfully',
                     type: 'success',
@@ -29,6 +33,7 @@ const productsSlice = createSlice({
                 });
             })
             .addCase(getProducts.rejected, (state) => {
+                state.isLoading = false;
                 toast.update(state.toastId, {
                     render: 'An error occurred',
                     type: 'error',
@@ -38,11 +43,13 @@ const productsSlice = createSlice({
                 });
             })
             .addCase(getFilteredProducts.pending, (state) => {
+                state.isLoading = true;
                 state.toastId = toast.loading('Filtering motorhomes...');
             })
             .addCase(getFilteredProducts.fulfilled, (state, action) => {
                 state.products = action.payload;
                 state.isLoadMore = false;
+                state.isLoading = false;
                 if (action.payload.length) {
                     toast.update(state.toastId, {
                         render: 'Motorhomes filtered successfully',
@@ -51,6 +58,7 @@ const productsSlice = createSlice({
                         autoClose: 2000,
                         closeOnClick: true,
                     });
+                    state.isEmptyResultFilter = false;
                 } else {
                     toast.update(state.toastId, {
                         render: 'Nothing was found',
@@ -59,9 +67,11 @@ const productsSlice = createSlice({
                         autoClose: 2000,
                         closeOnClick: true,
                     });
+                    state.isEmptyResultFilter = true;
                 }
             })
             .addCase(getFilteredProducts.rejected, (state) => {
+                state.isLoading = false;
                 toast.update(state.toastId, {
                     render: 'Nothing was found',
                     type: 'error',

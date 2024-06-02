@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,6 +12,7 @@ import CustomButton from 'components/CustomButton';
 import equipments from './equipments.json';
 import types from './types.json';
 import { getFilteredProducts } from '../../redux/products/products-operations';
+import { selectisEmptyResultFilter } from '../../redux/products/products-selectors';
 
 import scss from './Filters.module.scss';
 
@@ -30,20 +31,24 @@ const schema = yup
     );
 
 const Filters = () => {
+    const isEmptyResultFilter = useSelector(selectisEmptyResultFilter);
+
     const defaultValues = {
         location: '',
         equipments: [],
         type: '',
     };
     const dispatch = useDispatch();
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, reset } = useForm({
         defaultValues,
         resolver: yupResolver(schema),
     });
 
     const onSubmit = (data) => {
         dispatch(getFilteredProducts(data));
-        console.log(data);
+        {
+            !isEmptyResultFilter && reset();
+        }
     };
 
     return (
