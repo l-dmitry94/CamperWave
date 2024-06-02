@@ -6,6 +6,8 @@ export const selectIsLoadMore = (state) => state.products.isLoadMore;
 
 export const selectIsLoading = (state) => state.products.isLoading;
 
+export const selectError = (state) => state.products.error;
+
 export const selectisEmptyResultFilter = (state) =>
     state.products.isEmptyResultFilter;
 

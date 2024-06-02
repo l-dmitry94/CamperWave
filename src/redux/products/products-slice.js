@@ -11,6 +11,7 @@ const productsSlice = createSlice({
         toastId: null,
         isEmptyResultFilter: false,
         isLoading: false,
+        error: null,
     },
     extraReducers: (builder) =>
         builder
@@ -24,6 +25,7 @@ const productsSlice = createSlice({
                     : state.products;
                 state.isLoadMore = action.payload.length === 4;
                 state.isLoading = false;
+                state.error = null;
                 toast.update(state.toastId, {
                     render: 'Motorhomes loaded successfully',
                     type: 'success',
@@ -32,7 +34,8 @@ const productsSlice = createSlice({
                     closeOnClick: true,
                 });
             })
-            .addCase(getProducts.rejected, (state) => {
+            .addCase(getProducts.rejected, (state, action) => {
+                state.error = action.payload;
                 state.isLoading = false;
                 toast.update(state.toastId, {
                     render: 'An error occurred',
@@ -50,7 +53,9 @@ const productsSlice = createSlice({
                 state.products = action.payload;
                 state.isLoadMore = false;
                 state.isLoading = false;
+                state.error = null;
                 if (action.payload.length) {
+                    state.error = null;
                     toast.update(state.toastId, {
                         render: 'Motorhomes filtered successfully',
                         type: 'success',
@@ -60,6 +65,7 @@ const productsSlice = createSlice({
                     });
                     state.isEmptyResultFilter = false;
                 } else {
+                    state.error = 'Not Found';
                     toast.update(state.toastId, {
                         render: 'Nothing was found',
                         type: 'error',
@@ -70,7 +76,7 @@ const productsSlice = createSlice({
                     state.isEmptyResultFilter = true;
                 }
             })
-            .addCase(getFilteredProducts.rejected, (state) => {
+            .addCase(getFilteredProducts.rejected, (state, action) => {
                 state.isLoading = false;
                 toast.update(state.toastId, {
                     render: 'Nothing was found',
@@ -79,6 +85,7 @@ const productsSlice = createSlice({
                     autoClose: 2000,
                     closeOnClick: true,
                 });
+                state.error = action.payload;
             }),
 });
 

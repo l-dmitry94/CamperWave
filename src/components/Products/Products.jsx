@@ -6,6 +6,7 @@ import CustomButton from 'components/CustomButton';
 
 import { getProducts } from '../../redux/products/products-operations';
 import {
+    selectError,
     selectIsLoadMore,
     selectIsLoading,
     selectProducts,
@@ -19,6 +20,7 @@ const Products = () => {
     const products = useSelector(selectProducts);
     const isLoadMore = useSelector(selectIsLoadMore);
     const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
 
     useEffect(() => {
         dispatch(getProducts(page));
@@ -41,7 +43,7 @@ const Products = () => {
         <section className={scss.section}>
             {!isLoading && (
                 <>
-                    {products.length ? (
+                    {products.length && error !== undefined ? (
                         <>
                             <ul className={scss.list}>
                                 {products.map((product) => (
