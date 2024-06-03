@@ -13,16 +13,6 @@ const productsSlice = createSlice({
         isLoading: false,
         error: null,
     },
-    reducers: {
-        resetProducts: (state) => {
-            state.products = [];
-            state.currentPage = 1;
-            state.isLoadMore = false;
-            state.isEmptyResultFilter = false;
-            state.isLoading = false;
-            state.error = null;
-        },
-    },
     extraReducers: (builder) =>
         builder
             .addCase(getProducts.pending, (state) => {
@@ -98,7 +88,5 @@ const productsSlice = createSlice({
                 state.error = action.payload;
             }),
 });
-
-export const { resetProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;
