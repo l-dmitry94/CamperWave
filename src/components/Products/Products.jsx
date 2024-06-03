@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ProductsItem from './ProductsItem';
@@ -13,7 +13,6 @@ import {
 } from '../../redux/products/products-selectors';
 
 import scss from './Products.module.scss';
-import { resetProducts } from '../../redux/products/products-slice';
 
 const Products = () => {
     const dispatch = useDispatch();
@@ -22,17 +21,8 @@ const Products = () => {
     const isLoadMore = useSelector(selectIsLoadMore);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
-    const isFirstRender = useRef(true);
 
     useEffect(() => {
-        dispatch(resetProducts());
-    }, [dispatch]);
-
-    useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
         dispatch(getProducts(page));
     }, [dispatch, page]);
 
@@ -53,7 +43,7 @@ const Products = () => {
         <section className={scss.section}>
             {!isLoading && (
                 <>
-                    {products.length > 0 && error !== undefined ? (
+                    {products.length && error !== undefined ? (
                         <>
                             <ul className={scss.list}>
                                 {products.map((product) => (
