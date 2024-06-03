@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ProductsItem from './ProductsItem';
@@ -21,8 +21,13 @@ const Products = () => {
     const isLoadMore = useSelector(selectIsLoadMore);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
         dispatch(getProducts(page));
     }, [dispatch, page]);
 
